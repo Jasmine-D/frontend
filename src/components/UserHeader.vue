@@ -18,8 +18,12 @@
         预约挂号服务平台
     </el-aside>
     <el-main>
-      <div style="width:50%">
-      <el-input v-model="input" placeholder="请输入医生名进行搜索" suffix-icon="el-icon-search"></el-input>
+      <el-radio-group v-model="radio1" size="small">
+        <el-radio-button label="医生"></el-radio-button>
+        <el-radio-button label="医院"></el-radio-button>
+      </el-radio-group>
+      <div style="width:80%">
+        <el-input v-model="input" :placeholder="holder" suffix-icon="el-icon-search"></el-input>
       </div>
     </el-main>
   </el-container>
@@ -32,10 +36,10 @@
   text-color="#fff"
   active-text-color="#ffd04"
   >
-  <el-menu-item index="1" class="menu_item"><a href="#" target="_blank">网站首页</a></el-menu-item>
-  <el-menu-item index="2" class="menu_item"><a href="#" target="_blank">预约挂号</a></el-menu-item>
-  <el-menu-item index="3" class="menu_item"><a href="#" target="_blank">个人中心</a></el-menu-item>
-  <el-menu-item index="4" class="menu_item"><a href="#" target="_blank">预约指南</a></el-menu-item>
+  <el-menu-item index="1" class="menu_item"><a href="#">网站首页</a></el-menu-item>
+  <el-menu-item index="2" class="menu_item"><a href="#">预约挂号</a></el-menu-item>
+  <el-menu-item index="3" class="menu_item"><a href="#">个人中心</a></el-menu-item>
+  <el-menu-item index="4" class="menu_item"><a href="#">预约指南</a></el-menu-item>
 </el-menu>
 </el-container>
 </template>
@@ -45,7 +49,18 @@ export default {
   name: 'UserHeader',
   data () {
     return {
-      input: ''
+      input: '',
+      radio1: '医生',
+      holder: '请输入医生名进行搜索'
+    }
+  },
+  watch: {
+    radio1: function () {
+      if (this.radio1 == '医生') {
+        this.holder = '请输入医生名进行搜索'
+      } else if(this.radio1 == '医院'){
+        this.holder = '请输入医院名进行搜索'
+      }
     }
   }
 }
@@ -62,6 +77,10 @@ export default {
   font-size:15px;
   height:35px;
   line-height: 35px;
+  }
+  .el-menu--horizontal>.el-menu-item{
+    line-height: 35px;
+    height: 40px;
   }
   .el-footer {
     background-color: #B3C0D1;
@@ -82,7 +101,8 @@ export default {
     height: 30px;
     line-height: 30px;
   }
-  .el-aside {
+  .el-aside
+   {
     color: #333;
     text-align: center;
     height:90px;
@@ -90,9 +110,12 @@ export default {
   }
   .el-main {
     color: #333;
-    text-align: center;
+    text-align: left;
     height:90px;
-    line-height:50px;
+    line-height:0px;
     padding-left:10%;
+    padding-top:0.6%;
+    padding-bottom:0.6%;
+    padding-right:10%;
   }
 </style>

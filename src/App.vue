@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <!-- 导航区域 -->
-    <UserHeader/>
+    <!--<UserHeader/>-->
     <router-view></router-view>
   </div>
 </template>
 
-<script>
+<!--<script>
 import UserHeader from '@/components/UserHeader.vue'
 export default {
   components: { UserHeader },
   name: 'App'
 }
-</script>
+</script>-->
